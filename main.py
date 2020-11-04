@@ -13,15 +13,15 @@ def get_line(file):
 
 def make_request(url):
     if url.strip() != "":
-        soup = BeautifulSoup(requests.get('https://www.mustat.com/' + url.replace('http://','').replace('https://','')).text,'html5lib')
-        print(url.replace('http://','').replace('https://',''))
-        with open('result.txt', 'a') as f:
+        soup = BeautifulSoup(requests.get("https://www.mustat.com/" + url.replace("http://","").replace("https://","")).text,"html5lib")
+        print(url.replace("http://","").replace("https://",""))
+        with open("result.txt", "a") as f:
             try:
-                f.write(url.replace('http://','').replace('https://','') + ' ; ' + soup.select_one('span.underline:nth-child(1)').text + '\n')
+                f.write(url.replace("http://","").replace("https://","") + " ; " + soup.select_one("span.underline:nth-child(1)").text + "\n")
             except:
-                print('404')
+                print("404")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-p","--pool", help="20", type=str)
     parser.add_argument("-f","--file", help="url.txt", type=str)
